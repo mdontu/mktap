@@ -82,16 +82,16 @@ static int mktap(const char *input, const char *output, const char *name, int ad
 		return EXIT_FAILURE;
 	}
 
-#define WRITE(__fd, __buf, __size, __checksum)              \
+#define WRITE(__fd, __buf, __size, __checksum)                      \
 	if (__write(__fd, __buf, (size_t)__size, __checksum) < 0) { \
-		close(ofd);                                 \
-		return EXIT_FAILURE;                        \
+		close(ofd);                                         \
+		return EXIT_FAILURE;                                \
 	}
 
-#define WRITE1(__fd, __data, __checksum)              \
+#define WRITE1(__fd, __data, __checksum)                             \
 	if (__write1(__fd, (unsigned char)__data, __checksum) < 0) { \
-		close(ofd);                           \
-		return EXIT_FAILURE;                  \
+		close(ofd);                                          \
+		return EXIT_FAILURE;                                 \
 	}
 
 	/* Length */

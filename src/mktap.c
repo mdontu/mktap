@@ -114,11 +114,21 @@ static int mktap(const char *input, const char *output, const char *name, int ad
 	WRITE1(ofd, st.st_size & 0xff, &checksum);
 	WRITE1(ofd, (st.st_size & 0xff00) >> 8, &checksum);
 
-	/* Address */
-	WRITE1(ofd, address & 0xff, &checksum);
-	WRITE1(ofd, (address & 0xff00) >> 8, &checksum);
+	/* Parameter 1 */
+	if (type == 0) {
+		/* Program: no auto-run */
+		WRITE1(ofd, 0, &checksum);
+		WRITE1(ofd, 128, &checksum);
+	} else if (type == 3) {
+		/* Bytes: start address */
+		WRITE1(ofd, address & 0xff, &checksum);
+		WRITE1(ofd, (address & 0xff00) >> 8, &checksum);
+	} else {
+		WRITE1(ofd, 0, &checksum);
+		WRITE1(ofd, 128, &checksum);
+	}
 
-	/* Reserved */
+	/* Parameter 2 */
 	WRITE1(ofd, 0, &checksum);
 	WRITE1(ofd, 128, &checksum);
 
@@ -156,7 +166,7 @@ int main(int argc, char *argv[])
 	int address = 0;
 	int type = 3;
 
-	while ((opt = getopt(argc, argv, "a:hn:o:s:")) != -1) {
+	while ((opt = getopt(argc, argv, "a:hn:o:s:t:")) != -1) {
 		switch (opt) {
 		case 'a':
 			sscanf(optarg, "%i", &address);

@@ -55,7 +55,7 @@ jobs:
     runs-on: macos-latest-large
     steps:
     - name: Install required packages
-      run: brew update && brew upgrade && brew install cmake
+      run: brew update && brew install cmake
     - uses: actions/checkout@v4
     - name: Configure
       run: cmake -DCMAKE_BUILD_TYPE=Debug -B build
@@ -67,7 +67,7 @@ jobs:
     runs-on: macos-latest-large
     steps:
     - name: Install required packages
-      run: brew update && brew upgrade && brew install cmake
+      run: brew update && brew install cmake
     - uses: actions/checkout@v4
     - name: Configure
       run: cmake -DCMAKE_BUILD_TYPE=Release -B build

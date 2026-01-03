@@ -54,8 +54,6 @@ jobs:
   build-macos-intel-debug:
     runs-on: macos-15-intel
     steps:
-    - name: Install required packages
-      run: brew update && brew install cmake
     - uses: actions/checkout@v4
     - name: Configure
       run: cmake -DCMAKE_BUILD_TYPE=Debug -B build
@@ -66,8 +64,6 @@ jobs:
   build-macos-intel-release:
     runs-on: macos-15-intel
     steps:
-    - name: Install required packages
-      run: brew update && brew install cmake
     - uses: actions/checkout@v4
     - name: Configure
       run: cmake -DCMAKE_BUILD_TYPE=Release -B build
@@ -78,8 +74,6 @@ jobs:
   build-macos-arm64-debug:
     runs-on: macos-latest
     steps:
-    - name: Install required packages
-      run: brew update && brew install cmake
     - uses: actions/checkout@v4
     - name: Configure
       run: cmake -DCMAKE_BUILD_TYPE=Debug -B build
@@ -90,8 +84,6 @@ jobs:
   build-macos-arm64-release:
     runs-on: macos-latest
     steps:
-    - name: Install required packages
-      run: brew update && brew install cmake
     - uses: actions/checkout@v4
     - name: Configure
       run: cmake -DCMAKE_BUILD_TYPE=Release -B build

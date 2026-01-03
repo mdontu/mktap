@@ -75,3 +75,27 @@ jobs:
       run: cmake --build build -v
     - name: Install
       run: cmake --install build -v
+  build-macos-arm64-debug:
+    runs-on: macos-latest
+    steps:
+    - name: Install required packages
+      run: brew update && brew install cmake
+    - uses: actions/checkout@v4
+    - name: Configure
+      run: cmake -DCMAKE_BUILD_TYPE=Debug -B build
+    - name: Build
+      run: cmake --build build -v
+    - name: Install
+      run: cmake --install build -v
+  build-macos-arm64-release:
+    runs-on: macos-latest
+    steps:
+    - name: Install required packages
+      run: brew update && brew install cmake
+    - uses: actions/checkout@v4
+    - name: Configure
+      run: cmake -DCMAKE_BUILD_TYPE=Release -B build
+    - name: Build
+      run: cmake --build build -v
+    - name: Install
+      run: cmake --install build -v

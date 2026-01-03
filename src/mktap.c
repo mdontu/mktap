@@ -204,13 +204,13 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	if (optind >= argc) {
-		fprintf(stderr, "Error: missing input file\n");
+	if (type < 0 || type > 3) {
+		fprintf(stderr, "Error: invalid type\n");
 		exit(EXIT_FAILURE);
 	}
 
-	if (type < 0 || type > 3) {
-		fprintf(stderr, "Error: invalid type\n");
+	if (optind >= argc) {
+		fprintf(stderr, "Error: missing input file\n");
 		exit(EXIT_FAILURE);
 	}
 

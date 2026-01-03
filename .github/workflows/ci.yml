@@ -52,7 +52,7 @@ jobs:
     - name: Install
       run: sudo cmake --install build -v
   build-macos-intel-debug:
-    runs-on: macos-latest-large
+    runs-on: macos-15-intel
     steps:
     - name: Install required packages
       run: brew update && brew install cmake
@@ -64,7 +64,7 @@ jobs:
     - name: Install
       run: cmake --install build -v
   build-macos-intel-release:
-    runs-on: macos-latest-large
+    runs-on: macos-15-intel
     steps:
     - name: Install required packages
       run: brew update && brew install cmake
